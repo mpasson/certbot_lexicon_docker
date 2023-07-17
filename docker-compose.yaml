@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  certbot_lexicon:
+    build:
+      context: .
+    container_name: certbot_lexicon
+    volumes:
+      - ./conf:/etc/letsencrypt
+      - ./logs:/var/log/letsencrypt/
+    env_file:
+      - ./credentials.env
+    command: /opt/certbot.bash
+    tty: true
