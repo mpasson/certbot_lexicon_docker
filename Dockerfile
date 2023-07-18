@@ -1,6 +1,6 @@
 # Dockerfile for certbot
 
-FROM alpine
+FROM alpine:3.18
 
 RUN apk add --update --no-cache \
     python3 \
@@ -14,7 +14,8 @@ RUN apk add --update --no-cache \
     && rm -rf /var/cache/apk/*
 
 RUN pip install dns-lexicon
-ENV PATH="$PATH:/opt/"
+ENV PATH="$PATH:/opt/" \
+    PROVIDER_UPDATE_DELAY=120
 
 COPY ./scripts/* /opt/
 RUN chmod +x /opt/*

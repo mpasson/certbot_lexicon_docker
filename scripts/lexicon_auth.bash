@@ -3,8 +3,6 @@
 
 set -euf -o pipefail
 
-PROVIDER_UPDATE_DELAY=120
-
 # To be invoked via Certbot's --manual-auth-hook
 function auth {
     lexicon "${PROVIDER}" \
